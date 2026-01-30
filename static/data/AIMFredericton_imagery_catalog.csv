@@ -1,0 +1,11 @@
+﻿collection_location ,ui_group,ui_label,service_type,url,default_on
+fredericton,1920s,1924 Mosaic,tiled,https://timemachine.gge.unb.ca/server/rest/services/Hosted/F1924OMsu2025/MapServer,FALSE
+fredericton,1930s,1931 Mosaic,tiled,https://timemachine.gge.unb.ca/server/rest/services/Hosted/F1931Msu2025/MapServer,
+fredericton,1940s,1946 Mosaic,tiled,https://timemachine.gge.unb.ca/server/rest/services/Hosted/F1946/MapServer,
+fredericton,1950s,1951 Mosaic,tiled,https://timemachine.gge.unb.ca/server/rest/services/Hosted/F1951OMsu2025v2/MapServer,
+fredericton,1960s,1969 Mosaic,tiled,https://timemachine.gge.unb.ca/server/rest/services/Hosted/F1969/MapServer,
+fredericton,1970s,1975 Mosaic,tiled,https://timemachine.gge.unb.ca/server/rest/services/Hosted/F1975_new/MapServer,
+fredericton,1980s,1981 Mosaic,tiled,https://timemachine.gge.unb.ca/server/rest/services/Hosted/1981/MapServer,
+fredericton,1990s,1995 Mosaic,tiled,https://timemachine.gge.unb.ca/server/rest/services/Hosted/F1995_ver2/MapServer,
+fredericton,basemap,Imagery Basemap,basemap,Imagery,TRUE
+fredericton,basemap,Hybrid Labels ,basemap,ImageryLabels,FALSE

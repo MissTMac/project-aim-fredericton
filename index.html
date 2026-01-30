@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Project AIM: Archives In Maps</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder@3.1.6/dist/esri-leaflet-geocoder.css" />
+
+  <!-- App CSS (relative path; works on localhost and GitHub Pages project sites) -->
+  <link rel="stylesheet" href="static/css/styles.css" />
+</head>
+
+<body>
+  <h1>Project AIM: <strong>Archives In Maps</strong></h1>
+  <div id="subtitle">Fredericton, New Brunswick (1924-1999)</div>
+
+  <div id="main">
+    <div id="left-pane">
+      <div class="title-row"><div id="imagery-label">Archival Imagery</div><button id="resizer-btn" class="header-btn" type="button" title="<-Resize->"><-Resize-></button></div>
+      <div id="imagery-toggle"></div>
+      <div id="map"></div>
+      <div id="map-window-dock" class="dock" style="display:none;"></div>
+    </div>
+
+    <div id="right-pane">
+      <div class="title-row">
+        <div id="pdf-label">Archival Documents</div>
+      </div>
+
+      <div id="toolbar">
+        <label class="small">Decade:</label>
+        <select id="decade-select"><option value="">-- Select decade --</option></select>
+
+        <label class="small" style="margin-left:6px;">Document:</label>
+        <select id="pdf-select" disabled style="min-width:220px;"><option value="">-- Select document --</option></select>
+
+        <button id="open-pdf-in-app" disabled>Open in Viewer</button>
+        <button id="open-pdf-tab" disabled>Open in New Tab</button>
+
+        <span class="toolbar-break" aria-hidden="true"></span>
+        <button id="open-archive-provenance">Collection Provenance</button>
+      </div>
+
+      <div id="pdf-viewer-container">
+        <div id="pdf-tabs"></div>
+        <iframe id="pdf-viewer" src=""></iframe>
+      </div>
+
+      <div id="doc-window-dock" class="dock" style="display:none;"></div>
+    </div>
+  </div>
+
+  <!-- Leaflet + Esri Leaflet -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/esri-leaflet@3.0.12/dist/esri-leaflet.js"></script>
+  <script src="https://unpkg.com/esri-leaflet-geocoder@3.1.6/dist/esri-leaflet-geocoder.js"></script>
+
+  <!-- SheetJS for XLSX metadata rendering -->
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+  <!-- PDF.js viewer helper (uses your local /pdfjs/web/viewer.html) -->
+  <script src="static/js/pdfviewer.js"></script>
+
+  <!-- App -->
+  <script src="static/js/app.js"></script>
+</body>
+</html>

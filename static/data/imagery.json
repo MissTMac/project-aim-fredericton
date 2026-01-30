@@ -1,0 +1,82 @@
+[
+  {
+    "collection_location": "",
+    "ui_group": "1920s",
+    "ui_label": "1924 Mosaic",
+    "service_type": "tiled",
+    "url": "https://timemachine.gge.unb.ca/server/rest/services/Hosted/F1924OMsu2025/MapServer",
+    "default_on": false
+  },
+  {
+    "collection_location": "",
+    "ui_group": "1930s",
+    "ui_label": "1931 Mosaic",
+    "service_type": "tiled",
+    "url": "https://timemachine.gge.unb.ca/server/rest/services/Hosted/F1931Msu2025/MapServer",
+    "default_on": false
+  },
+  {
+    "collection_location": "",
+    "ui_group": "1940s",
+    "ui_label": "1946 Mosaic",
+    "service_type": "tiled",
+    "url": "https://timemachine.gge.unb.ca/server/rest/services/Hosted/F1946/MapServer",
+    "default_on": false
+  },
+  {
+    "collection_location": "",
+    "ui_group": "1950s",
+    "ui_label": "1951 Mosaic",
+    "service_type": "tiled",
+    "url": "https://timemachine.gge.unb.ca/server/rest/services/Hosted/F1951OMsu2025v2/MapServer",
+    "default_on": false
+  },
+  {
+    "collection_location": "",
+    "ui_group": "1960s",
+    "ui_label": "1969 Mosaic",
+    "service_type": "tiled",
+    "url": "https://timemachine.gge.unb.ca/server/rest/services/Hosted/F1969/MapServer",
+    "default_on": false
+  },
+  {
+    "collection_location": "",
+    "ui_group": "1970s",
+    "ui_label": "1975 Mosaic",
+    "service_type": "tiled",
+    "url": "https://timemachine.gge.unb.ca/server/rest/services/Hosted/F1975_new/MapServer",
+    "default_on": false
+  },
+  {
+    "collection_location": "",
+    "ui_group": "1980s",
+    "ui_label": "1981 Mosaic",
+    "service_type": "tiled",
+    "url": "https://timemachine.gge.unb.ca/server/rest/services/Hosted/1981/MapServer",
+    "default_on": false
+  },
+  {
+    "collection_location": "",
+    "ui_group": "1990s",
+    "ui_label": "1995 Mosaic",
+    "service_type": "tiled",
+    "url": "https://timemachine.gge.unb.ca/server/rest/services/Hosted/F1995_ver2/MapServer",
+    "default_on": false
+  },
+  {
+    "collection_location": "",
+    "ui_group": "basemap",
+    "ui_label": "Imagery Basemap",
+    "service_type": "basemap",
+    "url": "Imagery",
+    "default_on": true
+  },
+  {
+    "collection_location": "",
+    "ui_group": "basemap",
+    "ui_label": "Hybrid Labels",
+    "service_type": "basemap",
+    "url": "ImageryLabels",
+    "default_on": false
+  }
+]

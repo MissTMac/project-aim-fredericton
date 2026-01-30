@@ -1,0 +1,330 @@
+    /* dark theme + layout */
+
+    body, html { margin: 0; height: 100%; font-family: sans-serif; background: #1e1e1e; color: #ccc; }
+
+    h1 { margin: 10px; user-select: none; font-size: 24px; }
+
+    h1 strong { font-weight: bold; text-decoration: underline; }
+
+    #subtitle { margin: 0 10px 15px 10px; font-style: italic; color: #aaa; user-select: none; }
+
+    #main { display: flex; height: calc(100% - 90px); margin: 0 10px 10px 10px; border: 1px solid #444; border-radius: 6px; background-color: #2a2a2a; overflow: hidden; }
+
+    #left-pane, #right-pane { display: flex; flex-direction: column; background-color: #2a2a2a; color: #ccc; height: 100%; }
+
+    #left-pane { width: 60%; position: relative; overflow-y: auto; }
+
+    #right-pane { flex-grow: 1; background-color: #1a1a1a; position: relative; }
+    .title-row { display:flex; align-items:center; background-color:#333; border-bottom:1px solid #444; padding:6px 10px; user-select:none; flex-shrink:0; justify-content:space-between; }
+
+    #imagery-label, #pdf-label { font-weight:bold; color:#ccc; }
+
+    #map { flex-grow: 1; min-height: 0; }
+
+    #imagery-toggle { background-color:#222; padding:8px 12px; overflow-y:auto; max-height:220px; border-bottom:1px solid #444; font-size:14px; user-select:none; color:#ccc; }
+
+    #imagery-toggle .year-group { margin-bottom:12px; }
+
+    #imagery-toggle .year-label { font-weight:bold; border-bottom:1px solid #555; margin-bottom:6px; padding-bottom:2px; }
+
+    #imagery-toggle ul { list-style:none; padding-left:12px; margin:0; }
+
+    #imagery-toggle li { margin-bottom:8px; display:flex; align-items:center; gap:8px; flex-wrap: wrap; }
+
+    /* Resizer: only resize from the handle button beside 'Archival Documents'. */
+    #resizer-btn.header-btn {
+      background: #d0d0d0;
+      color: #000;
+      border: 1px solid #8a8a8a;
+      border-radius: 4px;
+      padding: 6px 10px;
+      font-size: 13px;
+      line-height: 1;
+      cursor: ew-resize;
+      user-select: none;
+    }
+    #resizer-btn.header-btn:hover {
+      filter: brightness(1.05);
+    }
+    .title-row { gap: 10px; }
+
+    /* Toolbar line-break helper */
+    #toolbar .toolbar-break {
+      flex-basis: 100%;
+      height: 0;
+    }
+
+    /* Collection Provenance button: same size/behavior as other toolbar buttons */
+    #open-archive-provenance {
+      margin-left: 0 !important;
+      white-space: nowrap;
+    }
+
+    #toolbar { padding:10px; background:#2b2b2b; border-bottom:1px solid #555; user-select:none; display:flex; align-items:flex-start; gap:10px; flex-wrap: wrap; }
+
+    #pdf-viewer-container { flex-grow:1; display:flex; flex-direction:column; }
+
+    #pdf-tabs { background-color:#333; padding:5px 10px; border-bottom:1px solid #555; display:flex; overflow-x:auto; user-select:none; min-height:40px; align-items:center; gap:6px; }
+    .tab { background-color:#444; color:#ccc; padding:6px 12px; border-radius:4px 4px 0 0; cursor:pointer; display:flex; align-items:center; gap:8px; }
+    .tab.active { background-color:#1e1e1e; font-weight:bold; }
+    .tab .close-btn { color:#aaa; font-weight:bold; cursor:pointer; user-select:none; }
+
+    #pdf-viewer { flex-grow:1; border:none; width:100%; background:white; }
+    .opacity-control { width:120px; font-size:12px; }
+    label.small { font-size:13px; color:#ddd; margin-right:6px; }
+
+    /* small responsive tweak */
+    @media (max-width:900px) { #left-pane { width:50%; } }
+
+    /* compact geocoder in the top-left */
+    .leaflet-control-geosearch,
+    .leaflet-control-esri-geosearch {
+      max-width: 320px;
+    }
+
+    .leaflet-control-geosearch input,
+    .leaflet-control-esri-geosearch input,
+    .geocoder-control-input {
+      width: 280px !important;   /* adjust as you like */
+      max-width: 280px !important;
+    }
+
+
+    /* ================= Floating window system ================= */
+    .dock {
+      position: absolute;
+      left: 0; right: 0;
+      bottom: 0;
+      display: flex;
+      gap: 6px;
+      padding: 6px;
+      background: rgba(20,20,20,0.85);
+      border-top: 1px solid #444;
+      z-index: 9999;
+      overflow-x: auto;
+    }
+
+    .dock button {
+      background: #444;
+      color: #ddd;
+      border: 1px solid #666;
+      border-radius: 6px;
+      padding: 4px 10px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .floating-window {
+      position: absolute;
+      width: min(760px, 95vw);
+      height: min(560px, 78vh);
+      top: 120px;
+      left: 20px;
+      resize: both;
+      min-width: 320px;
+      min-height: 240px;
+      background: #1f1f1f;
+      border: 1px solid #555;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+      z-index: 10000;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .floating-header {
+      background: #2d2d2d;
+      border-bottom: 1px solid #444;
+      padding: 8px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: move;
+      user-select: none;
+      gap: 10px;
+    }
+
+    .floating-title {
+      font-weight: 700;
+      color: #ddd;
+      font-size: 13px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .floating-actions {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .floating-actions button {
+      background: #444;
+      color: #ddd;
+      border: 1px solid #666;
+      border-radius: 6px;
+      padding: 4px 8px;
+      cursor: pointer;
+    }
+
+    .floating-body {
+      flex: 1;
+      background: #fff;
+      overflow: auto;
+    }
+
+    .floating-body iframe {
+      border: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+    }
+
+    /* XLSX sheet table styling */
+    .sheet-wrap {
+      padding: 10px;
+      background: #fff;
+      color: #111;
+      font-size: 12px;
+    }
+    .sheet-wrap table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    .sheet-wrap td, .sheet-wrap th {
+      border: 1px solid #ddd;
+      padding: 4px 6px;
+      vertical-align: top;
+    }
+    .sheet-wrap th {
+      background: #f4f4f4;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+
+
+/* ================= PDF.js viewer ================= */
+
+#pdfjs-root{
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.pdfjs-toolbar{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  background: #2b2b2b;
+  border-bottom: 1px solid #555;
+  user-select: none;
+}
+
+.pdfjs-toolbar button{
+  background: #444;
+  color: #ddd;
+  border: 1px solid #666;
+  border-radius: 6px;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+
+.pdfjs-toolbar button:disabled{
+  opacity: 0.5;
+  cursor: default;
+}
+
+.pdfjs-page{
+  font-size: 13px;
+  color: #ddd;
+}
+
+.pdfjs-spacer{
+  flex: 1;
+}
+
+.pdfjs-zoom-label{
+  font-size: 12px;
+  color: #bbb;
+  min-width: 48px;
+  text-align: right;
+}
+
+.pdfjs-viewer{
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  background: #1a1a1a;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 10px;
+}
+
+#pdfjs-canvas{
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+}
+
+.pdfjs-empty{
+  color: #bbb;
+  font-size: 13px;
+  padding: 14px;
+  max-width: 520px;
+  text-align: center;
+}
+
+
+
+/* ===== Project AIM: more visible resizer (between map and documents) ===== */
+#resizer {
+  background: #f5b400; /* high contrast */
+  position: relative;
+}
+
+#resizer .resizer-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.2px;
+  color: #111;
+  background: rgba(255,255,255,0.75);
+  border-radius: 8px;
+  padding: 2px 8px;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+#resizer .resizer-handle::before {
+  background: #111;
+  box-shadow: -4px 0 0 #111, 4px 0 0 #111;
+  opacity: 1;
+}
+
+/* ===== Esri geocoder: improve dropdown/readability ===== */
+.leaflet-control-esri-geosearch input,
+.geocoder-control-input,
+.geocoder-control-input input {
+  color: #111 !important;
+}
+
+.geocoder-control-suggestions,
+.geocoder-control-suggestions ul,
+.geocoder-control-suggestion,
+.geocoder-control-suggestions li {
+  color: #111 !important;
+  background: #fff !important;
+}
+
+.geocoder-control-suggestion:hover,
+.geocoder-control-suggestions li:hover {
+  background: #f0f0f0 !important;
+}
